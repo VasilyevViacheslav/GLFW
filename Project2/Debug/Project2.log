@@ -1,2 +1,40 @@
 ﻿  Source.cpp
+C:\Users\laris\source\repos\Project2\Project2\Header.h(82,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\laris\source\repos\Project2\Project2\Header.h(175,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\laris\source\repos\Project2\Project2\Header.h(177,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\laris\source\repos\Project2\Project2\Header.h(178,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\laris\source\repos\Project2\Project2\Header.h(179,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\laris\source\repos\Project2\Project2\Header.h(180,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\laris\source\repos\Project2\Project2\Header.h(181,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\laris\source\repos\Project2\Project2\Header.h(182,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+          with
+          [
+              _Ty=float
+          ]
+C:\Users\laris\source\repos\Project2\Project2\Source.cpp(36,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\laris\source\repos\Project2\Project2\Source.cpp(39,45): warning C4244: аргумент: преобразование "_Ty" в "GLfloat", возможна потеря данных
+          with
+          [
+              _Ty=double
+          ]
   Project2.vcxproj -> C:\Users\laris\source\repos\Project2\Debug\Project2.exe

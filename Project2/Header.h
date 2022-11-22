@@ -50,6 +50,7 @@ public:
 class Kit_Triangle
 {
 public:
+	double MaxDesteny = 0;
 	double mInertia = 0; //Момент инерции всего тела
 	double Kit_Mass = 0; // Масса фигуры
 	double SOfAllTriangles = 0; // Площадь всей фигуры
@@ -57,7 +58,8 @@ public:
 	double CenterMassKit_x = 0; // Центр масс фигуры по координате х
 	double CenterMassKit_y = 0; // Центр масс фигуры по координате y
 public:
-	std::vector<Triangle> Massive_Of_TRiangle; // Массив треугольников входящих в фигуру
+	std::vector<Triangle> Massive_Of_TRiangle{}; // Массив треугольников входящих в фигуру
+	std::vector<double> Massive_Of_Dest{};
 	Kit_Triangle() {};
 	Kit_Triangle(Triangle tr) //Контруктор 
 	{
@@ -68,13 +70,23 @@ public:
 		SOfAllTriangles = tr.S;//Т.к треугольник первый можно взять его площадь
 		AverageDesttiny = Kit_Mass / SOfAllTriangles;
 		mInertia = tr.mInertia;
+		Massive_Of_Dest.push_back(tr.Destiny);
 	}
 	~Kit_Triangle()
 	{
 		Massive_Of_TRiangle.clear();
 	}
-public: 	void add_Triangle(Triangle tr) // Добавление треугольника
-{
+public: 
+	void ChangeMaxDesteny(std::vector<Triangle> Massive_Of_TRiangle, double& MaxDest)
+	{
+		for (int i = 0; i < Massive_Of_TRiangle.size(); ++i)
+		{
+			if (MaxDest < Massive_Of_TRiangle[i].Destiny) MaxDest = Massive_Of_TRiangle[i].Destiny;
+		}
+	}
+	double Get_MaxDest() { return MaxDesteny; }
+	void add_Triangle(Triangle tr) // Добавление треугольника
+	{
 	if (!Check(Massive_Of_TRiangle, tr)) {
 		Massive_Of_TRiangle.push_back(tr); // Добавляем треугольник в конец массива
 		SOfAllTriangles += tr.S; //Площадь всей фигуры + площадь треугольника
@@ -84,8 +96,10 @@ public: 	void add_Triangle(Triangle tr) // Добавление треугольника
 		Kit_Mass += tr.mass;
 		mInertia += tr.mInertia + tr.mass * (sqrt((tr.x_CenterOfMass - CenterMassKit_x) * (tr.x_CenterOfMass - CenterMassKit_x)
 			- (tr.y_CenterOfMass - CenterMassKit_y) * (tr.y_CenterOfMass - CenterMassKit_y))); //Находим общий момент по ф-ле Гюйгейна-Штейнера
+		ChangeMaxDesteny(Massive_Of_TRiangle, MaxDesteny);
+		Massive_Of_Dest.push_back(tr.Destiny);
 	}
-	else std::cout << "Пересекаются";
+	else throw std::runtime_error("Пересекаются");
 }
 	  //Код для проверки пересечения с погрешностью eps
 	  typedef std::pair<double, double> TriPoint;
@@ -155,7 +169,23 @@ public: 	void add_Triangle(Triangle tr) // Добавление треугольника
 		  //The triangles collide
 		  return true;
 	  }
-	  bool Check(std::vector<Triangle> massiveTr, Triangle Tr)//Функция проверки пересечния
+	  std::vector<float> Get_Coords(std::vector<Triangle> Massive_tr) 
+	  {
+		  std::vector<float> Massive_Coords{};
+		  for (int i = 0; i < Massive_tr.size(); ++i)
+		  {
+			  Massive_Coords.push_back(Massive_tr[i].x1);
+			  Massive_Coords.push_back(Massive_tr[i].y1);
+			  Massive_Coords.push_back(Massive_tr[i].x2);
+			  Massive_Coords.push_back(Massive_tr[i].y2);
+			  Massive_Coords.push_back(Massive_tr[i].x3);
+			  Massive_Coords.push_back(Massive_tr[i].y3);
+
+		  }
+		  return Massive_Coords;
+
+	  }
+		bool Check(std::vector<Triangle> massiveTr, Triangle Tr)//Функция проверки пересечния
 	  {
 		  TriPoint t1[] = { TriPoint(Tr.x1,Tr.y1),TriPoint(Tr.x2,Tr.y2),TriPoint(Tr.x3,Tr.y3) }; //Треугольник который добавляем
 
