@@ -1,47 +1,42 @@
 ﻿  Source.cpp
-C:\Users\laris\source\repos\Project2\Project2\Header.h(73,31): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Header.h(76,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\laris\source\repos\Project2\Project2\Header.h(93,32): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
           with
           [
               _Ty=GLfloat
           ]
-C:\Users\laris\source\repos\Project2\Project2\Header.h(82,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\laris\source\repos\Project2\Project2\Header.h(100,31): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Header.h(189,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\laris\source\repos\Project2\Project2\Header.h(191,43): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
           with
           [
               _Ty=GLfloat
           ]
-C:\Users\laris\source\repos\Project2\Project2\Header.h(175,23): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\laris\source\repos\Project2\Project2\Header.h(177,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Header.h(192,43): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
           with
           [
               _Ty=GLfloat
           ]
-C:\Users\laris\source\repos\Project2\Project2\Header.h(178,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Header.h(193,43): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
           with
           [
               _Ty=GLfloat
           ]
-C:\Users\laris\source\repos\Project2\Project2\Header.h(179,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Header.h(194,43): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
           with
           [
               _Ty=GLfloat
           ]
-C:\Users\laris\source\repos\Project2\Project2\Header.h(180,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Header.h(195,43): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
           with
           [
               _Ty=GLfloat
           ]
-C:\Users\laris\source\repos\Project2\Project2\Header.h(181,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Header.h(196,43): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
           with
           [
               _Ty=GLfloat
           ]
-C:\Users\laris\source\repos\Project2\Project2\Header.h(182,44): warning C4244: аргумент: преобразование "double" в "_Ty", возможна потеря данных
-          with
-          [
-              _Ty=GLfloat
-          ]
-C:\Users\laris\source\repos\Project2\Project2\Source.cpp(39,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\laris\source\repos\Project2\Project2\Source.cpp(41,43): warning C4244: аргумент: преобразование "GLfloat" в "const unsigned int", возможна потеря данных
-C:\Users\laris\source\repos\Project2\Project2\Source.cpp(41,45): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Source.cpp(50,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\laris\source\repos\Project2\Project2\Source.cpp(52,47): warning C4244: аргумент: преобразование "GLfloat" в "const unsigned int", возможна потеря данных
+C:\Users\laris\source\repos\Project2\Project2\Source.cpp(52,49): warning C4244: аргумент: преобразование "double" в "GLfloat", возможна потеря данных
   Project2.vcxproj -> C:\Users\laris\source\repos\Project2\Debug\Project2.exe

@@ -18,12 +18,10 @@ public:
 
 		cons();
 	}
-public:
-
 	double x1, y1, x2, y2, x3, y3; // (x1,y1) - первая верщина ...
 	double mass;
-	double d12 = sqrt((x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1)); // Длинаа стороны с вершинами 1 и 2
-	double d23 = sqrt((x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2));// Длинаа стороны с вершинами 2 и 3
+	double d12 = sqrt(pow((x2 - x1),2) + (y2 - y1) * (y2 - y1)); // Длинаа стороны с вершинами 1 и 2
+	double d23 = sqrt((x3 - x2) * (x3 - x2) + (y3 - y2) * (y3 - y2));// Длинаа стороны с вершинами 2 
 	double d13 = sqrt((x3 - x1) * (x3 - x1) + (y3 - y1) * (y3 - y1));// Длинаа стороны с вершинами 1 и 3
 	double P = d12 + d23 + d13;  // Периметр 
 	double S = sqrt((P / 2) * ((P / 2) - d12) * ((P / 2) - d23) * ((P / 2) - d13)); // АПлощадь
@@ -57,26 +55,22 @@ public:
 	double AverageDesttiny = 0; // Плотность всей фигуры
 	double CenterMassKit_x = 0; // Центр масс фигуры по координате х
 	double CenterMassKit_y = 0; // Центр масс фигуры по координате y
-public:
+
+
 	std::vector<Triangle> Massive_Of_TRiangle{}; // Массив треугольников входящих в фигуру
 	std::vector<GLfloat > Massive_Of_Dest{};
-	Kit_Triangle() {};
+
+
 	Kit_Triangle(Triangle tr) //Контруктор 
 	{
-		Massive_Of_TRiangle.push_back(tr);
-		CenterMassKit_x = CenterMassKit_x; //Т.к треугольник первый можно взять его ц.Масс
-		CenterMassKit_y = CenterMassKit_y;
-		Kit_Mass = tr.mass; //Т.к треугольник первый можно взять его массу
-		SOfAllTriangles = tr.S;//Т.к треугольник первый можно взять его площадь
-		AverageDesttiny = Kit_Mass / SOfAllTriangles;
-		mInertia = tr.mInertia;
-		Massive_Of_Dest.push_back(tr.Destiny);
+	
 	}
 	~Kit_Triangle()
 	{
 		Massive_Of_TRiangle.clear();
 	}
-public: 
+
+
 	void ChangeMaxDesteny(std::vector<Triangle> Massive_Of_TRiangle, double& MaxDest)
 	{
 		for (int i = 0; i < Massive_Of_TRiangle.size(); ++i)
@@ -84,23 +78,23 @@ public:
 			if (MaxDest < Massive_Of_TRiangle[i].Destiny) MaxDest = Massive_Of_TRiangle[i].Destiny;
 		}
 	}
-	double Get_MaxDest() { return MaxDesteny; }
 	void add_Triangle(Triangle tr) // Добавление треугольника
 	{
-	if (!Check(Massive_Of_TRiangle, tr)) {
-		Massive_Of_TRiangle.push_back(tr); // Добавляем треугольник в конец массива
-		SOfAllTriangles += tr.S; //Площадь всей фигуры + площадь треугольника
-		AverageDesttiny = Kit_Mass / SOfAllTriangles; //Плотность общ масса/Общая площадь
-		CenterMassKit_x += (tr.x_CenterOfMass * tr.mass + CenterMassKit_x * Kit_Mass) / (Kit_Mass + tr.mass); //По формуле нахождения ц.Масс
-		CenterMassKit_y += (tr.y_CenterOfMass * tr.mass + CenterMassKit_y * Kit_Mass) / (Kit_Mass + tr.mass);
-		Kit_Mass += tr.mass;
-		mInertia += tr.mInertia + tr.mass * (sqrt((tr.x_CenterOfMass - CenterMassKit_x) * (tr.x_CenterOfMass - CenterMassKit_x)
-			- (tr.y_CenterOfMass - CenterMassKit_y) * (tr.y_CenterOfMass - CenterMassKit_y))); //Находим общий момент по ф-ле Гюйгейна-Штейнера
-		ChangeMaxDesteny(Massive_Of_TRiangle, MaxDesteny);
-		Massive_Of_Dest.push_back(tr.Destiny);
-	}
+		if (!Check(Massive_Of_TRiangle, tr)) {
+			Massive_Of_TRiangle.push_back(tr); // Добавляем треугольник в конец массива
+			SOfAllTriangles += tr.S; //Площадь всей фигуры + площадь треугольника
+			AverageDesttiny = Kit_Mass / SOfAllTriangles; //Плотность общ масса/Общая площадь
+			CenterMassKit_x += (tr.x_CenterOfMass * tr.mass + CenterMassKit_x * Kit_Mass) / (Kit_Mass + tr.mass); //По формуле нахождения ц.Масс
+			CenterMassKit_y += (tr.y_CenterOfMass * tr.mass + CenterMassKit_y * Kit_Mass) / (Kit_Mass + tr.mass);
+			Kit_Mass += tr.mass;
+			mInertia += tr.mInertia + tr.mass * (sqrt((tr.x_CenterOfMass - CenterMassKit_x) * (tr.x_CenterOfMass - CenterMassKit_x)
+				- (tr.y_CenterOfMass - CenterMassKit_y) * (tr.y_CenterOfMass - CenterMassKit_y))); //Находим общий момент по ф-ле Гюйгейна-Штейнера
+			ChangeMaxDesteny(Massive_Of_TRiangle, MaxDesteny);
+			Massive_Of_Dest.push_back(tr.Destiny);
+		}
 	else throw std::runtime_error("Пересекаются");
-}
+	}
+
 	  //Код для проверки пересечения с погрешностью eps
 	  typedef std::pair<double, double> TriPoint;
 
@@ -169,22 +163,8 @@ public:
 		  //The triangles collide
 		  return true;
 	  }
-	  std::vector<float> Get_Coords(std::vector<Triangle> Massive_tr) 
-	  {
-		  std::vector<float> Massive_Coords{};
-		  for (int i = 0; i < Massive_tr.size(); ++i)
-		  {
-			  Massive_Coords.push_back(Massive_tr[i].x1);
-			  Massive_Coords.push_back(Massive_tr[i].y1);
-			  Massive_Coords.push_back(Massive_tr[i].x2);
-			  Massive_Coords.push_back(Massive_tr[i].y2);
-			  Massive_Coords.push_back(Massive_tr[i].x3);
-			  Massive_Coords.push_back(Massive_tr[i].y3);
 
-		  }
-		  return Massive_Coords;
 
-	  }
 		bool Check(std::vector<Triangle> massiveTr, Triangle Tr)//Функция проверки пересечния
 	  {
 		  TriPoint t1[] = { TriPoint(Tr.x1,Tr.y1),TriPoint(Tr.x2,Tr.y2),TriPoint(Tr.x3,Tr.y3) }; //Треугольник который добавляем
@@ -201,7 +181,26 @@ public:
 		  }
 		  return false;
 	  }
+
+
+		std::vector<float> Get_Coords(std::vector<Triangle> Massive_tr)
+		{
+			std::vector<float> Massive_Coords{};
+			for (int i = 0; i < Massive_tr.size(); ++i)
+			{
+				Massive_Coords.push_back(Massive_tr[i].x1);
+				Massive_Coords.push_back(Massive_tr[i].y1);
+				Massive_Coords.push_back(Massive_tr[i].x2);
+				Massive_Coords.push_back(Massive_tr[i].y2);
+				Massive_Coords.push_back(Massive_tr[i].x3);
+				Massive_Coords.push_back(Massive_tr[i].y3);
+
+			}
+			return Massive_Coords;
+
+		}
 	  double Get_mInertiea() { return  mInertia; }
+	  double Get_MaxDest() { return MaxDesteny; }
 };
 
 

@@ -1,23 +1,34 @@
 #include <GLFW/glfw3.h>
 #include "Header.h"
 #include <iterator>
+#include <iostream>
+#include <string>
 int main(void)
 {
     GLFWwindow* window;
-    Triangle First(0, 0, 0.5, 0, 0.5, 0.5, 1);
-    Triangle Second(-0.5,-0.6,0.f,-0.1f,0.f,1.f,14);
-    Kit_Triangle Obs(First);
-    Obs.add_Triangle(Second);
-    std::vector<float> Coords = Obs.Get_Coords(Obs.Massive_Of_TRiangle);
-    
-    
+    std::vector<Triangle> First;
+    Triangle None{ 0,0,0,0,0,0,0 };
+    Kit_Triangle Obs(None);
+    float x1,y1,x2,y2,x3,y3,mass;
     int i = 0;
+    while (true)
+    {
+        First.push_back(None);
+        std::cout << "If want stop ->mass = 0, Trangles must be expressed anti-clockwise ";
+        std::cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3 >> mass;
+        if (mass == 0) break;
+        First[i] = { x1,y1,x2,y2,x3,y3,mass};
+        Obs.add_Triangle(First[i]);
+        ++i;
+    }
+    std::cout << Obs.CenterMassKit_x << "   " << Obs.CenterMassKit_y;
+    std::vector<float> Coords = Obs.Get_Coords(Obs.Massive_Of_TRiangle);
     /* Initialize the library */
     if (!glfwInit())
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "TRIANGLEEEES", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -38,7 +49,7 @@ int main(void)
 
         for (int i = 0; i < Coords.size(); i += 6) 
         {
-            glColor3f(Obs.Massive_Of_Dest[j]/Obs.MaxDesteny, 0, 0);
+                glColor3f(Obs.Massive_Of_Dest[j]/Obs.MaxDesteny, 0, 0);
                 glVertex2d(Coords[i], Coords[i + 1]);
                 glVertex2d(Coords[i + 2], Coords[i + 3]);
                 glVertex2d(Coords[i + 4], Coords[i + 5]);
