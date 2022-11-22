@@ -59,7 +59,7 @@ public:
 	double CenterMassKit_y = 0; // Центр масс фигуры по координате y
 public:
 	std::vector<Triangle> Massive_Of_TRiangle{}; // Массив треугольников входящих в фигуру
-	std::vector<double> Massive_Of_Dest{};
+	std::vector<GLfloat > Massive_Of_Dest{};
 	Kit_Triangle() {};
 	Kit_Triangle(Triangle tr) //Контруктор 
 	{
